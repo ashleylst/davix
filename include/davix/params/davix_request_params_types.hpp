@@ -57,7 +57,7 @@ namespace RequestProtocol{
         Azure,
         // Use gcloud API
         Gcloud,
-        // Use Swift
+        // Use Swift API
         Swift
     };
 }
