@@ -85,39 +85,39 @@ struct X509Data{
 
 struct RequestParamsInternal{
     RequestParamsInternal() :
-        _ssl_check(true),
-        _redirection(true),
-        _recursive_mode(false),
-        _s3_listing_mode(S3ListingMode::Hierarchical),
-        _s3_max_key_entries(10000),
-        _ca_path(),
-        _x509_data(),
-        _idlogpass(),
-        _call_loginpswwd(NULL),
-        _call_loginpswwd_userdata(NULL),
-        _aws_cred(),
-        _aws_region(),
-        _aws_token(),
-        _aws_alternate(false),
-        _azure_key(),
-        _gcloud_creds(),
-        _swift_token(),
-        _swift_project_id(),
-        ops_timeout(),
-        connexion_timeout(),
-        agent_string(default_agent),
-        _proto(RequestProtocol::Auto),
-        _metalink_mode(MetalinkMode::Auto),
-        _customhdr(),
-        _proxy_server(),
-        _session_flag(SESSION_FLAG_KEEP_ALIVE),
-        _state_uid(get_requeste_uid()),
-        _transferCb(),
-        retry_number(default_retry_number),
-        retry_delay(),
-        _copy_mode(CopyMode::Push),
-        _support_100continue(true),
-        _accepted_retry(180), // wait for half an hour by default
+            _ssl_check(true),
+            _redirection(true),
+            _recursive_mode(false),
+            _s3_listing_mode(S3ListingMode::Hierarchical),
+            _s3_max_key_entries(10000),
+            _ca_path(),
+            _x509_data(),
+            _idlogpass(),
+            _call_loginpswwd(NULL),
+            _call_loginpswwd_userdata(NULL),
+            _aws_cred(),
+            _aws_region(),
+            _aws_token(),
+            _aws_alternate(false),
+            _azure_key(),
+            _gcloud_creds(),
+            _os_token(),
+            _os_project_id(),
+            ops_timeout(),
+            connexion_timeout(),
+            agent_string(default_agent),
+            _proto(RequestProtocol::Auto),
+            _metalink_mode(MetalinkMode::Auto),
+            _customhdr(),
+            _proxy_server(),
+            _session_flag(SESSION_FLAG_KEEP_ALIVE),
+            _state_uid(get_requeste_uid()),
+            _transferCb(),
+            retry_number(default_retry_number),
+            retry_delay(),
+            _copy_mode(CopyMode::Push),
+            _support_100continue(true),
+            _accepted_retry(180), // wait for half an hour by default
         _accepted_delay(10)
     {
         timespec_clear(&connexion_timeout);
@@ -135,40 +135,40 @@ struct RequestParamsInternal{
 
     }
     RequestParamsInternal(const RequestParamsInternal & param_private):
-        _ssl_check(param_private._ssl_check),
-        _redirection(param_private._redirection),
-        _recursive_mode(param_private._recursive_mode),
-        _s3_listing_mode(param_private._s3_listing_mode),
-        _s3_max_key_entries(param_private._s3_max_key_entries),
-        _ca_path(param_private._ca_path),
-        _x509_data(param_private._x509_data),
-        _idlogpass(param_private._idlogpass),
-        _call_loginpswwd(param_private._call_loginpswwd),
-        _call_loginpswwd_userdata(param_private._call_loginpswwd_userdata),
-        _aws_cred(param_private._aws_cred),
-        _aws_region(param_private._aws_region),
-        _aws_token(param_private._aws_token),
-        _aws_alternate(param_private._aws_alternate),
-        _azure_key(param_private._azure_key),
-        _gcloud_creds(param_private._gcloud_creds),
-        _swift_token(param_private._swift_token),
-        _swift_project_id(param_private._swift_project_id),
-        ops_timeout(),
-        connexion_timeout(),
-        agent_string(param_private.agent_string),
-        _proto(param_private._proto),
-        _metalink_mode(param_private._metalink_mode),
-        _customhdr(param_private._customhdr),
-        _proxy_server(param_private._proxy_server),
-        _session_flag(param_private._session_flag),
-        _state_uid(param_private._state_uid),
-        _transferCb(param_private._transferCb),
-        retry_number(param_private.retry_number),
-        retry_delay(param_private.retry_delay),
-        _copy_mode(param_private._copy_mode),
-        _support_100continue(param_private._support_100continue),
-        _accepted_retry(param_private._accepted_retry),
-        _accepted_delay(param_private._accepted_delay) {
+            _ssl_check(param_private._ssl_check),
+            _redirection(param_private._redirection),
+            _recursive_mode(param_private._recursive_mode),
+            _s3_listing_mode(param_private._s3_listing_mode),
+            _s3_max_key_entries(param_private._s3_max_key_entries),
+            _ca_path(param_private._ca_path),
+            _x509_data(param_private._x509_data),
+            _idlogpass(param_private._idlogpass),
+            _call_loginpswwd(param_private._call_loginpswwd),
+            _call_loginpswwd_userdata(param_private._call_loginpswwd_userdata),
+            _aws_cred(param_private._aws_cred),
+            _aws_region(param_private._aws_region),
+            _aws_token(param_private._aws_token),
+            _aws_alternate(param_private._aws_alternate),
+            _azure_key(param_private._azure_key),
+            _gcloud_creds(param_private._gcloud_creds),
+            _os_token(param_private._os_token),
+            _os_project_id(param_private._os_project_id),
+            ops_timeout(),
+            connexion_timeout(),
+            agent_string(param_private.agent_string),
+            _proto(param_private._proto),
+            _metalink_mode(param_private._metalink_mode),
+            _customhdr(param_private._customhdr),
+            _proxy_server(param_private._proxy_server),
+            _session_flag(param_private._session_flag),
+            _state_uid(param_private._state_uid),
+            _transferCb(param_private._transferCb),
+            retry_number(param_private.retry_number),
+            retry_delay(param_private.retry_delay),
+            _copy_mode(param_private._copy_mode),
+            _support_100continue(param_private._support_100continue),
+            _accepted_retry(param_private._accepted_retry),
+            _accepted_delay(param_private._accepted_delay) {
 
         timespec_copy(&(connexion_timeout), &(param_private.connexion_timeout));
         timespec_copy(&(ops_timeout), &(param_private.ops_timeout));
@@ -198,8 +198,8 @@ struct RequestParamsInternal{
     bool _aws_alternate;
     AzureSecretKey _azure_key;
     gcloud::Credentials _gcloud_creds;
-    SwiftToken _swift_token;
-    SwiftProjectID _swift_project_id;
+    OSToken _os_token;
+    OSProjectID _os_project_id;
 
     // timeout management
     struct timespec ops_timeout;
@@ -409,20 +409,20 @@ const gcloud::Credentials & RequestParams::getGcloudCredentials() const {
     return d_ptr->_gcloud_creds;
 }
 
-void RequestParams::setSwiftToken(const SwiftToken &token) {
-    d_ptr->_swift_token = token;
+void RequestParams::setOSToken(const OSToken &token) {
+    d_ptr->_os_token = token;
 }
 
-const SwiftToken & RequestParams::getSwiftToken() const {
-    return d_ptr->_swift_token;
+const OSToken & RequestParams::getOSToken() const {
+    return d_ptr->_os_token;
 }
 
-void RequestParams::setSwiftProjectID(const SwiftProjectID &id) {
-    d_ptr->_swift_project_id = id;
+void RequestParams::setOSProjectID(const OSProjectID &id) {
+    d_ptr->_os_project_id = id;
 }
 
-const SwiftProjectID & RequestParams::getSwiftProjectID() const {
-    return d_ptr->_swift_project_id;
+const OSProjectID & RequestParams::getOSProjectID() const {
+    return d_ptr->_os_project_id;
 }
 
 void RequestParams::setS3ListingMode(const S3ListingMode::S3ListingMode s3_listing_mode){
